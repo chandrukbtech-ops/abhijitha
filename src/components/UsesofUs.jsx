@@ -1,6 +1,6 @@
 import React from "react";
 import { FaShieldAlt, FaClock, FaFileAlt, FaChartLine, FaUserTie, FaHandshake } from "react-icons/fa";
-
+import { FaBalanceScale, FaClipboardList } from "react-icons/fa";
 function UsesofUs() {
   const reasons = [
     {
@@ -32,12 +32,22 @@ function UsesofUs() {
       icon: <FaHandshake />,
       title: "Trusted Partnership",
       desc: "We build long-term relationships based on transparency, ethics, and reliability."
+    },
+    {
+      icon: <FaBalanceScale />,
+      title: "Regulatory Risk Management",
+      desc: "Identify, assess, and mitigate compliance risks before they become costly legal or operational issues."
+    },
+    {
+      icon: <FaClipboardList />,
+      title: "Streamlined Compliance Processes",
+      desc: "We design structured compliance systems that improve efficiency, reduce errors, and ensure smooth statutory operations."
     }
   ];
 
   return (
     <section className="uses-section">
-      <div className="uses-container">
+      <div className="uses-container" data-aos="slide-up">
 
         <div className="uses-header">
           <h5>WHY YOU NEED US</h5>

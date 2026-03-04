@@ -5,26 +5,55 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
+#root {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.footer {
+  margin-top: auto;
+}
 /* ========== NAVBAR ========== */
+/* ================= NAVBAR ================= */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 18px 50px;
-  background: rgb(183, 183, 183);
+  background-image: linear-gradient(
+    to right,
+    rgb(255, 73, 73) 0%,
+    rgb(250, 191, 81) 25%,
+    yellow 50%,
+    rgb(86, 252, 86) 75%,
+    rgb(95, 95, 253) 100%
+  );
+
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .navbar.dark {
   background: #2d2d2d;
-  color: rgb(255, 255, 255);
+  color: white;
 }
 
+/* ================= LOGO ================= */
 .logo-section {
   display: flex;
   align-items: center;
@@ -40,11 +69,16 @@
   font-weight: 600;
 }
 
+/* ================= NAV LINKS ================= */
 .nav-links {
   list-style: none;
   display: flex;
   align-items: center;
   gap: 25px;
+}
+
+.nav-links li {
+  position: relative;
 }
 
 .nav-links a,
@@ -66,15 +100,16 @@
   color: #3460ff;
 }
 
-/* ========== DROPDOWN ========== */
+/* ================= DROPDOWN ================= */
 .dropdown-menu {
   position: absolute;
   top: 35px;
-  background: white;
+  left: 0;
+  background: rgb(255, 239, 134);
   list-style: none;
   padding: 12px;
   border-radius: 8px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   min-width: 200px;
 }
 
@@ -87,40 +122,26 @@
 }
 
 .dropdown-menu li a:hover {
-  color: #0a1f6d;
+  color: #7e9aff;
 }
 
-/* ========== AUTH BUTTONS ========== */
-.auth-buttons {
-  display: flex;
-  gap: 10px;
-}
-
-.login-btn,
-.signup-btn {
+/* ================= AUTH BUTTON ================= */
+.login-btn {
   padding: 6px 14px;
   border-radius: 20px;
   cursor: pointer;
   font-size: 14px;
-  border: 1px solid #ffffff;
-  background: transparent;
+  border: 1px solid white;
+  background-color: #0a1f6d;
   color: #ececec;
   transition: 0.3s ease;
-  background-color: #0a1f6d;
 }
-
-
 
 .login-btn:hover {
   background: #002bc5;
-  color: white;
 }
 
-.signup-btn:hover {
-  background: #002bc5;
-}
-
-/* ========== DARK MODE BUTTON ========== */
+/* ================= DARK MODE BUTTON ================= */
 .mode-btn {
   background: transparent;
   border: none;
@@ -128,11 +149,55 @@
   cursor: pointer;
 }
 
+/* ================= HAMBURGER ================= */
+.hamburger {
+  display: none;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+@media (max-width: 768px) {
+
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    flex-direction: column;
+    background: rgb(143, 143, 143);
+    width: 100%;
+    padding: 20px;
+    gap: 15px;
+    display: none;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .navbar.dark .nav-links {
+    background: #2d2d2d;
+  }
+
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    background-color:rgb(255, 255, 255) ;
+    padding: 5px 0;
+  }
+}
+
 /* ========== HERO SECTION ========== */
 .hero {
   width: 100%;
   height: 100vh;
-  background: linear-gradient(135deg, #2b6777, #cbd8e4);
+  background: linear-gradient(135deg, #5f2b77, #33c0cd);
   display: flex;
   align-items: center;
   margin-top: 80px;
@@ -305,7 +370,7 @@
 
 /* Highlight Card */
 .about-card.highlight {
-  background: linear-gradient(135deg, #0a1f6d, #08164a);
+  background: linear-gradient(135deg, #6788ff, #005364);
   color: white;
 }
 
@@ -371,7 +436,7 @@
 .service-card {
   background: #f8f9fc;
   padding: 35px 25px;
-  border-radius: 20px;
+  border-radius: 40px;
   transition: 0.4s ease;
   cursor: pointer;
   position: relative;
@@ -381,7 +446,7 @@
 /* Hover Effect */
 .service-card:hover {
   transform: translateY(-10px);
-  background: linear-gradient(135deg, #0a1f6d, #08164a);
+  background: linear-gradient(135deg, #52ab98, #08164a);
   color: white;
   box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
@@ -394,13 +459,13 @@
 /* Icon */
 .service-icon {
   font-size: 40px;
-  color: #2b6777;
+  color: #ff7e7e;
   margin-bottom: 20px;
   transition: 0.3s ease;
 }
 
 .service-card:hover .service-icon {
-  color: #86ffbd;
+  color: #ffffff;
   transform: scale(1.2);
 }
 
@@ -422,6 +487,16 @@
   .services-header h2 {
     font-size: 28px;
   }
+}
+/* Swiper Navigation Buttons */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #000000;
+}
+
+/* Smooth continuous effect */
+.services-swiper .swiper-wrapper {
+  transition-timing-function: linear !important;
 }
 
 /* ========== WHY YOU NEED US SECTION ========== */
@@ -509,6 +584,92 @@
     font-size: 28px;
   }
 }
+/* ========== REACH US ========== */
+
+.reach-section {
+  padding: 70px 20px;
+  background: linear-gradient(135deg,#08164a, #52ab98);
+  display: flex;
+  justify-content: center;
+}
+
+.reach-card {
+  width: 100%;
+  max-width: 900px;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 40px;
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Left Text Side */
+.reach-left {
+  flex: 1;
+}
+
+.reach-left h2 {
+  font-size: 28px;
+  color: #065f46;
+  margin-bottom: 10px;
+}
+
+.reach-left p {
+  color: #444;
+  font-size: 14px;
+}
+
+/* Form */
+.reach-form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.reach-form input,
+.reach-form textarea {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.reach-form input:focus,
+.reach-form textarea:focus {
+  border-color: #10b981;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+}
+
+/* Button */
+.reach-form button {
+  background: #10b981;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.reach-form button:hover {
+  background: #059669;
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .reach-card {
+    flex-direction: column;
+    padding: 30px;
+  }
+}
+
 /* ========== FOOTER ========== */
 
 .footer {

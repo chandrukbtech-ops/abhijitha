@@ -3,7 +3,7 @@ import React from "react";
 function AboutUs() {
   return (
     <section className="about-section">
-      <div className="about-container">
+      <div className="about-container" data-aos="slide-up">
 
         {/* Left Content */}
         <div className="about-left">

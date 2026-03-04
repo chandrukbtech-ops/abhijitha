@@ -4,30 +4,47 @@ import logo from "../assets/logo.png";
 function Navbar() {
   const [dropdown, setDropdown] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
+  const [mobileMenu, setMobileMenu] = useState(false);
 
   return (
     <nav className={`navbar ${darkMode ? "dark" : ""}`}>
+      
+      {/* Logo Section */}
       <div className="logo-section">
         <img src={logo} alt="Logo" className="logo" />
         <h4>Abhijit HR Compliance Services</h4>
       </div>
 
-      <ul className="nav-links">
+      {/* Hamburger Button */}
+      <button 
+        className="hamburger"
+        onClick={() => setMobileMenu(!mobileMenu)}
+      >
+        ☰
+      </button>
+
+      {/* Navigation Links */}
+      <ul className={`nav-links ${mobileMenu ? "active" : ""}`}>
+
         <li><a href="/">Home</a></li>
         <li><a href="/">About</a></li>
 
         <li 
           className="dropdown"
-          onMouseEnter={() => setDropdown(true)}
-          onMouseLeave={() => setDropdown(false)}
+          onMouseEnter={() => window.innerWidth > 768 && setDropdown(true)}
+          onMouseLeave={() => window.innerWidth > 768 && setDropdown(false)}
         >
-          <span>Services ▾</span>
+          <span onClick={() => window.innerWidth <= 768 && setDropdown(!dropdown)}>
+            Services ▾
+          </span>
+
           {dropdown && (
             <ul className="dropdown-menu">
               <li><a href="#">Labour Law Compliance</a></li>
               <li><a href="#">Payroll Management</a></li>
               <li><a href="#">Statutory Audit</a></li>
               <li><a href="#">HR Consulting</a></li>
+              <li><a href="#">New Labor Codes Consulting</a></li>
             </ul>
           )}
         </li>
@@ -37,19 +54,19 @@ function Navbar() {
         <li><a href="/careers">Careers</a></li>
         <li><a href="/contact">Contact</a></li>
 
-        <div className="auth-buttons">
+        <li className="auth-buttons">
           <button className="login-btn">Login</button>
-          <button className="signup-btn">Sign Up</button>
-        </div>
+        </li>
 
-        <div className="mode">
+        <li className="mode">
           <button 
             className="mode-btn"
             onClick={() => setDarkMode(!darkMode)}
           >
             {darkMode ? "☀️" : "🌙"}
           </button>
-        </div>
+        </li>
+
       </ul>
     </nav>
   );

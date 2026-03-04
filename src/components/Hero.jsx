@@ -3,7 +3,7 @@ import logo from "../assets/logo.png";
 function Hero() {
   return (
     <section className="hero">
-      <div className="hero-container">
+      <div className="hero-container" data-aos="slide-up">
 
         <div className="hero-left">
           <img src={logo} alt="HR Compliance" />

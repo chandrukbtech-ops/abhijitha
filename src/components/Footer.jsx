@@ -4,7 +4,7 @@ import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 function Footer() {
   return (
     <footer className="footer">
-      <div className="footer-container">
+      <div className="footer-container" >
 
         {/* Company Info */}
         <div className="footer-col">
